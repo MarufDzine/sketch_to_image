@@ -46,7 +46,7 @@ flowchart LR
 ## 2. Files
 
 ```
-sketch2image/
+sketch_to_image/
 ├── sketch2img.py          preprocessing + Generator class + single-image command
 ├── metrics.py             sketch-preservation metric + CLIP score
 ├── run_experiments.py     runs all experiments in config.yaml -> outputs/results.csv
@@ -69,8 +69,8 @@ I ran everything on Google Colab with a free **T4 GPU** (16 GB). Kaggle also wor
 
 **Local** (NVIDIA GPU with ≥ 8 GB VRAM, Python ≥ 3.10):
 ```bash
-git clone https://github.com/MarufDzine/sketch2image.git
-cd sketch2image
+git clone https://github.com/MarufDzine/sketch_to_image.git
+cd sketch_to_image
 pip install torch --index-url https://download.pytorch.org/whl/cu121   # if torch is not installed
 pip install -r requirements.txt
 ```
