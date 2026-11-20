@@ -1,0 +1,45 @@
+# Settings for all my experiments.
+# Each experiment changes ONE setting; everything else stays at `defaults`.
+
+models:
+  base: stable-diffusion-v1-5/stable-diffusion-v1-5
+  controlnets:
+    scribble: lllyasviel/control_v11p_sd15_scribble
+    lineart:  lllyasviel/control_v11p_sd15_lineart
+    canny:    lllyasviel/control_v11p_sd15_canny
+  clip: openai/clip-vit-base-patch16
+
+defaults:
+  control: scribble     # scribble | lineart | canny | img2img
+  style: photo          # key from `styles`
+  steps: 25
+  guidance: 7.5         # classifier-free guidance scale (CFG)
+  cond_scale: 1.0       # ControlNet conditioning scale
+  strength: 0.8         # img2img only
+  seed: 42
+  size: 512             # longest side in px
+
+# My sketches and what is drawn in them.
+# The prompt is "<subject>, <style text>".
+sketches:
+  - file: sketches/duck.jpeg
+    subject: "a white swan swimming on a calm lake"
+  - file: sketches/helicopter.jpeg
+    subject: "a helicopter flying over mountains and a river, clouds in the sky"
+  - file: sketches/house.jpeg
+    subject: "a small house next to a pine tree at night under a crescent moon"
+
+styles:
+  photo:      "photorealistic, professional photograph, natural lighting, highly detailed, 8k"
+  concept:    "digital concept art, dramatic cinematic lighting, artstation, vibrant colors"
+  watercolor: "watercolor painting, soft pastel colors, paper texture"
+  clay:       "3d render, claymation style, soft studio lighting"
+
+# Experiments
+experiments:
+  styles:      {vary: style,      values: [photo, concept, watercolor, clay]}
+  cond_scale:  {vary: cond_scale, values: [0.0, 0.3, 0.6, 0.9, 1.2, 1.5]}
+  guidance:    {vary: guidance,   values: [2.0, 4.0, 7.5, 11.0, 15.0]}
+  control:     {vary: control,    values: [scribble, lineart, canny]}
+  img2img:     {vary: strength,   values: [0.5, 0.7, 0.85, 1.0], fixed: {control: img2img}}
+  seeds:       {vary: seed,       values: [1, 2, 3, 4]}

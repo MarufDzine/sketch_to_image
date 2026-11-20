@@ -1,0 +1,10 @@
+# torch is pre-installed on Colab/Kaggle; install it separately for local use (see README)
+diffusers>=0.30
+transformers>=4.40
+accelerate
+opencv-python
+scikit-image
+pyyaml
+pandas
+matplotlib
+gradio
